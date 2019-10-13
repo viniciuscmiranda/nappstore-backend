@@ -21,4 +21,5 @@ const SaleSchema = new Schema({
     timestamps: true
 });
 
+
 module.exports = model('Sale', SaleSchema);

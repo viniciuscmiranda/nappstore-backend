@@ -6,7 +6,7 @@ const cors = require('cors');
 const server = express();
 
 mongoose.connect(
-    "mongodb+srv://nappstore:hqZvrOMFoyrm729E@nappstore-ttaoh.mongodb.net/nappstore?retryWrites=true&w=majority", {
+    process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
