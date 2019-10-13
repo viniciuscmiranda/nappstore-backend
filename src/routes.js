@@ -1,3 +1,4 @@
+//Routes
 const express = require('express');
 const ClientController = require('./controllers/ClientController');
 const ProductController = require('./controllers/ProductController');
@@ -9,10 +10,12 @@ const Sale = require('./models/Sale');
 
 const routes = express.Router();
 
+//Register routes
 routes.post('/newclient', ClientController.store);
 routes.post('/newproduct', ProductController.store);
 routes.post('/newsale', SaleController.store);
 
+//List routes
 routes.get('/clients', async(req, res) => {
     res.json(await Client.find());
 });
@@ -23,6 +26,7 @@ routes.get('/sales', async(req, res) => {
     res.json(await Sale.find());
 });
 
+//Page routes
 routes.get('/clients/:id', async(req, res) => {
     res.json(await Client.findById(req.params.id));
 });
@@ -35,7 +39,7 @@ routes.get('/sales/:id', async(req, res) => {
     res.json(await Sale.findById(req.params.id));
 });
 
-
+//Delete routes
 routes.delete('/sales/:id', async(req, res) => {
     const sale = await Sale.findById(req.params.id);
     await sale.remove();
