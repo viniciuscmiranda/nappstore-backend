@@ -58,4 +58,29 @@ routes.delete('/products/:id', async(req, res) => {
     res.send();
 });
 
+//Edit routes
+routes.post('/sales/:id', async(req, res) => {
+    let sale = await Sale.findById(req.params.id);
+    await Sale.updateOne(sale, req.body);
+    sale = await Sale.findById(req.params.id);
+
+    res.json(sale);
+});
+
+routes.post('/clients/:id', async(req, res) => {
+    let client = await Client.findById(req.params.id);
+    await Client.updateOne(client, req.body);
+    client = await Client.findById(req.params.id);
+
+    res.json(client);
+});
+
+routes.post('/products/:id', async(req, res) => {
+    let product = await Product.findById(req.params.id);
+    await Product.updateOne(product, req.body);
+    product = await Product.findById(req.params.id);
+
+    res.json(product);
+});
+
 module.exports = routes;
